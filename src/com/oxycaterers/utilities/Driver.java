@@ -42,7 +42,7 @@ public class Driver
                     break;
             }
 
-            myDriver.manage().timesouts().implycitlyWait(20, TimeUnit.SECONDS);
+          /*  myDriver.manage().timesouts().implycitlyWait(20, TimeUnit.SECONDS);
             myDriver.manage().window().maximize();
 
             defaultDriver = d;
@@ -50,7 +50,7 @@ public class Driver
             myDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             // LOGGER.debug("Setting Driver Time Out to 20 Seconds");
             myDriver.manage().window().maximize();
-            //  LOGGER.debug("Maximising Browser Window");
+            //  LOGGER.debug("Maximising Browser Window");*/
         }
         timeout=10;
         //  SetBrowserLanguage(l);
