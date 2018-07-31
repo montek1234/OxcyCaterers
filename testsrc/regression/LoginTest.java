@@ -47,7 +47,7 @@ public class LoginTest
 
 
 
-    @Test(priority = 1)
+   /* @Test(priority = 1)
     public void logintest()
     {
 
@@ -74,7 +74,7 @@ public class LoginTest
         Assert.assertEquals("Test is failed",expected,actual);
 
 
-    }
+    }*/
 
 
     @Test(priority = 2)
@@ -82,14 +82,25 @@ public class LoginTest
     {
         Login login=new Login(driver);
 
-        login.setTxtUserName(" ");
-        login.setTxtPassword(" ");
+        login.setTxtUserName("");
+        login.setTxtPassword("");
         login.clickLogin();
 
-        String expected="Dashboard";
+        String expected="submit";
         String actual="";
 
-        System.out.println("Sucessfully logged Out");
+        try
+        {
+            actual= driver.findElement(By.xpath("//*[@id='login']/div[4]/input")).getText();
+        }
+        catch (Exception e)
+        {
+            actual="";
+
+        }
+
+        Assert.assertEquals("Test is failed",expected,actual);
+
 
     }
 }
