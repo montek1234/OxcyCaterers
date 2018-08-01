@@ -33,8 +33,7 @@ public class LoginTest
 
         driver.manage().window().maximize();
 
-        driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
-
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
     }
 
@@ -46,8 +45,7 @@ public class LoginTest
     }
 
 
-
-   /* @Test(priority = 1)
+    @Test(priority = 1)
     public void logintest()
     {
 
@@ -56,25 +54,27 @@ public class LoginTest
         login.setTxtUserName("sara");
         login.setTxtPassword("Admin@123");
         login.clickLogin();
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        String expected="Dashboard";
-        String actual="";
+        String expected=driver.findElement(By.xpath("//b[text()='Dashboard']")).getText();
 
+        String actual;
 
         try
         {
+
             actual= driver.findElement(By.xpath("//b[text()='Dashboard']")).getText();
         }
         catch (Exception e)
         {
             actual="";
+            System.out.print("No values in actual");
 
         }
 
         Assert.assertEquals("Test is failed",expected,actual);
 
-
-    }*/
+    }
 
 
     @Test(priority = 2)
@@ -86,20 +86,26 @@ public class LoginTest
         login.setTxtPassword("");
         login.clickLogin();
 
-        String expected="submit";
-        String actual="";
+
+        boolean expected;
+
+        expected = driver.findElement(By.xpath("//input[@class='btn btn-danger btn-block disabled']")).isEnabled();
+
+
+        boolean actual;
 
         try
         {
-            actual= driver.findElement(By.xpath("//*[@id='login']/div[4]/input")).getText();
+            actual= true;
+
         }
         catch (Exception e)
         {
-            actual="";
-
+            actual=false;
         }
 
-        Assert.assertEquals("Test is failed",expected,actual);
+         Assert.assertEquals("Test is failed",expected,actual);
+
 
 
     }
